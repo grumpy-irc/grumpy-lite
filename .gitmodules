@@ -1,0 +1,9 @@
+[submodule "deps/libgp"]
+	path = deps/libgp
+	url = https://github.com/grumpy-irc/libgp
+[submodule "deps/grumpy"]
+	path = deps/grumpy
+	url = https://github.com/grumpy-irc/grumpy
+[submodule "deps/libirc"]
+	path = deps/libirc
+	url = https://github.com/grumpy-irc/libirc

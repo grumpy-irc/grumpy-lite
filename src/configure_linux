@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# This is configure script that will prepare this project for build on linux
+
+q=x
+function prepare {
+    if [ ! -d "$1" ];then
+        mkdir "$1"
+    else
+        echo "Folder $1 exists! Delete it."
+        exit 1
+    fi
+    cd "$1"
+    cmake ../GrumpyChat $2 -DCMAKE_PREFIX_PATH="$q/$3"
+    cd ..
+}
+
+if [ "$#" -gt 0 ];
+then
+    q="$1"
+else
+    echo "Specify absolute path to Qt installation, for example ~/Qt/5.9/"
+    read q
+fi
+
+prepare "release_x86" "-DCMAKE_BUILD_TYPE=Release" "gcc_64"
+#prepare $release_x86 "-DCMAKE_BUILD_TYPE=Release -DANDROID_ABI=x86" "android_x86/"
+#prepare $debug_x86 "-DCMAKE_BUILD_TYPE=Debug -DANDROID_ABI=x86" "android_x86/"
